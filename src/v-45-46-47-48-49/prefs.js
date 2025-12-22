@@ -25,6 +25,26 @@ export default class CustomizeClockExtensionPreferences extends ExtensionPrefere
             icon_name: 'preferences-system-symbolic',
         });
 
+        const clockStyleGroup = new Adw.PreferencesGroup({title: 'Clock Style'});
+        const styleOptions = ['digital', 'analog', 'led'];
+        const styleModel = new Gtk.StringList();
+        styleModel.append('Digital (Text)');
+        styleModel.append('Analog (Hands with seconds)');
+        styleModel.append('LED Ring (Digital core)');
+        const styleRow = new Adw.ComboRow({
+            title: 'Clock Style',
+            subtitle: 'Choose text, analog hands, or a LED ring with center digits',
+            model: styleModel,
+        });
+        const currentStyle = window._settings.get_string('clock-style');
+        const styleIndex = styleOptions.indexOf(currentStyle);
+        styleRow.selected = styleIndex >= 0 ? styleIndex : 0;
+        styleRow.connect('notify::selected', row => {
+            window._settings.set_string('clock-style', styleOptions[row.selected]);
+        });
+        clockStyleGroup.add(styleRow);
+        pageTwo.add(clockStyleGroup);
+
         gsettingsKeys = ['remove-time', 'time-font-color', 'time-font-size', 'custom-time-text', 'time-font-family', 'time-font-weight', 'time-font-style', 96];
         group = new CreateGroup('Clock Time', window._settings, gsettingsKeys, 'Leave it blank for default time format');
         pageTwo.add(group);
