@@ -1,6 +1,6 @@
 <schemalist>
-  <schema id="org.gnome.shell.extensions.customize-clock-on-lockscreen"
-    path="/org/gnome/shell/extensions/customize-clock-on-lockscreen/">
+  <schema id="org.gnome.shell.extensions.lock-clock"
+    path="/org/gnome/shell/extensions/lock-clock/">
 
     <key name="remove-command-output" type="b">
       <default>false</default>

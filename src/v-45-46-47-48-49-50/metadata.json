@@ -1,0 +1,19 @@
+{
+  "description": "Customize Clock on Lock Screen.",
+  "name": "Lock Clock",
+  "session-modes": [
+    "unlock-dialog"
+  ],
+  "settings-schema": "org.gnome.shell.extensions.lock-clock",
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50"
+  ],
+  "url": "https://github.com/polar0n/lock-clock.git",
+  "uuid": "LockClock@polar0n",
+  "version": 25
+}
